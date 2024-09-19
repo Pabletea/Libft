@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pabalons <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 10:35:40 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/18 10:42:19 by pabalons         ###   ########.fr       */
+/*   Created: 2024/09/19 16:22:39 by pabalons          #+#    #+#             */
+/*   Updated: 2024/09/19 16:59:26 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_isalpha(int c)
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	else
-		return (0);
 }

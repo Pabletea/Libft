@@ -6,16 +6,16 @@
 /*   By: pabalons <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 15:00:10 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/18 15:08:42 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/09/19 09:59:24 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	main(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i] != '\0')
-	i++;
-	return(i);
+		i++;
+	return (i);
 }

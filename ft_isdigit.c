@@ -9,10 +9,11 @@
 /*   Updated: 2024/09/18 13:42:53 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	main(int c)
+int	ft_isdigit(int c)
 {
-	if (cc >= 0 && <= 9)
+	if (c >= 0 && c <= 9)
 		return (1);
 	else
 		return (0);
