@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 16:22:39 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/23 14:32:47 by pabalons         ###   ########.fr       */
+/*   Created: 2024/09/23 11:15:16 by pabalons          #+#    #+#             */
+/*   Updated: 2024/09/23 14:30:34 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_atoi(const char *str)
 {
-	char	*s;
-	char	*d;
-	size_t	i;
+	int	resultado;
+	int	signo;
+	int	i;
 
-	s = (char *)src;
-	d = (char *)dest;
-	if (d > s)
-		while (n--)
-			d[n] = s[n];
-	else
-		while (n--)
-			*d++ = *s++;
-	return (dest);
-	return (d);
+	resultado = 0;
+	signo = 1;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			signo = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		resultado = resultado * 10 + (str[i] - '0');
+		if (resultado > 2147483647)
+			return (resultado * signo);
+	}
 }
