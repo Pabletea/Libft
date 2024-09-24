@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pabalons <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 10:02:45 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/19 10:14:43 by pabalons         ###   ########.fr       */
+/*   Created: 2024/09/19 15:58:14 by pabalons          #+#    #+#             */
+/*   Updated: 2024/09/24 07:30:20 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-int main(void *dest, int c, size_t count)
+void	ft_memset(void *s, int c, size_t n)
 {
- /*TODO*/
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	while (n--)
+		*ptr++ = (unsigned char)c;
 }

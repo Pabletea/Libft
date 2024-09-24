@@ -6,7 +6,7 @@
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 11:15:16 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/23 14:30:34 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/09/24 07:28:04 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ int	ft_atoi(const char *str)
 		if (resultado > 2147483647)
 			return (resultado * signo);
 	}
+	return (resultado * signo);
 }
