@@ -6,14 +6,16 @@
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:58:45 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/24 10:15:08 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:13:46 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
+	int	res;
+
+	res = 0;
 	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (c);
+		res = 1;
+	return (res);
 }

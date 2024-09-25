@@ -1,65 +1,73 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/25 10:26:56 by pabalons          #+#    #+#              #
+#    Updated: 2024/09/25 13:22:21 by pabalons         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
 
-COMPILER = cc
+SRCS		=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
+				ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
+				ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
+				ft_memmove.c ft_memset.c   \
+				ft_split.c ft_strchr.c \
+				ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
+				ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c \
+				ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
+				ft_tolower.c ft_toupper.c ft_*.c
 
-FILES = \
-		main.c \
-		ft_atoi.c \
-		ft_bzero.c \
-		ft_calloc.c \
-		ft_isalnum.c \
-		ft_isalpha.c \
-		ft_isascii.c \
-		ft_isdigit.c \
-		ft_isprint.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_memset.c \
-		ft_strchr.c \
-		ft_strlcat.c \
-		ft_strlcpy.c \
-		ft_strlen.c \
-		ft_strncmp.c \
-		ft_strnstr.c \
-		ft_strrchr.c \
-		ft_tolower.c \
-		ft_toupper.c \
-		ft_strdup.c \
-		ft_substr.c \
-		ft_strjoin.c \
-		ft_strtrim.c \
-		ft_split.c \
+TEST = test.c  # Archivo de prueba
 
-OBJECTS = $(FILES:.c=.o)
-INCLUDE = libft.h
+CC = cc
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Wextra -Werror
 
+OBJ = ${SRC:.c=.o}  # Crear los objetos de SRC correctamente
 
-all : $(NAME)
+BONUS_OBJ = ${BONUS_SRC:.c=.o}
 
-$(NAME): $(OBJECTS)
-	@echo "Compiling library $(NAME) and creating object files"
-	@$(COMPILER) $(FLAGS) $(OBJECTS) -o $(NAME)
+TEST_EXEC = test_exec  # Nombre del ejecutable de prueba
 
+# Generar todos los objetos y librería
+all: ${NAME}
+
+# Crear la librería estática
+${NAME}: ${OBJ}
+	@ar -rcs ${NAME} ${OBJ}
+
+bonus: .bonus_flag
+
+.bonus_flag: ${BONUS_OBJ}
+	@ar -rcs ${NAME} ${BONUS_OBJ}
+	-@touch .bonus_flag
+
+# Regla para compilar archivos objeto
+%.o: %.c
+	@${CC} ${FLAGS} -c $< -o $@
+
+# Limpiar objetos y ejecutables de prueba
 clean:
-	@echo "Cleaning object files"
-	@rm -f $(OBJECTS)
+	@rm -f ${OBJ} ${BONUS_OBJ}
+	@rm -f .bonus_flag ${TEST_EXEC}
 
-fclean:
-	@echo "Cleaning object files and library"
-	@rm -f $(OBJECTS) $(NAME)
+fclean: clean
+	@rm -f ${NAME}
 
 re: fclean all
 
+# Crear y ejecutar el programa de prueba
+exec: all ${TEST_EXEC}
+	@echo "Executing test with library $(NAME)"
+	@./${TEST_EXEC}
 
-exec: all
-	@echo "Executing library $(NAME)"
-	@./$(NAME)
-	@rm -f $(NAME)
+# Regla para compilar el ejecutable de prueba enlazando con la librería
+${TEST_EXEC}: ${NAME} ${TEST}
+	@${CC} ${FLAGS} ${TEST} -L. -lft -o ${TEST_EXEC}
 
-
-.PHONY: all clean fclean re exec
-
+.PHONY: all clean fclean re bonus

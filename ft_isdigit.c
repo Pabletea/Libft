@@ -6,14 +6,13 @@
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:47:53 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/24 10:14:34 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:14:54 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	if (c >= 0 && c <= 9)
+	if (c >= '0' && c <= '9')
 		return (1);
-	else
-		return (0);
+	return (0);
 }
