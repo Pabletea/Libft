@@ -6,7 +6,7 @@
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 07:43:07 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/25 10:13:48 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:44:53 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	count_words(const char *str, char c);
 static char	*fill_word(const char *str, int start, int end);
 static void	*ft_free(char **strs, int count);
 static void	ft_initiate_vars(int *i, int *j, int *s_word);
+int			ft_strlen(const char *str);
+void		*ft_calloc(size_t nmemb, size_t size);
 
 char	**ft_split(const char *s, char c)
 {
@@ -24,11 +26,13 @@ char	**ft_split(const char *s, char c)
 	int		j;
 	int		s_word;
 
-	ft_initiate_vars(&i, &j, &s_word);
+	*i = 0;
+	*j = 0;
+	*s_word = -1;
 	arr_str = ft_calloc((count_words(s, c) + 1), sizeof(char *));
 	if (!arr_str)
 		return (NULL);
-	while (i <= ft_strlen(s))
+	while (i++ <= ft_strlen(s))
 	{
 		if (s[i] != c && s_word < 0)
 			s_word = i;
@@ -40,16 +44,8 @@ char	**ft_split(const char *s, char c)
 			s_word = -1;
 			j++;
 		}
-		i++;
 	}
 	return (arr_str);
-}
-
-static void	ft_initiate_vars(int *i, int *j, int *s_word)
-{
-	*i = 0;
-	*j = 0;
-	*s_word = -1;
 }
 
 static void	*ft_free(char **strs, int count)
@@ -104,4 +100,38 @@ static int	count_words(const char *str, char c)
 		str++;
 	}
 	return (count);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (*str != '\0')
+	{
+		i++;
+		str++;
+	}
+	return (i);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void			*ptr;
+	size_t			total_size;
+	unsigned char	*ptr_byte;
+	size_t			i;
+
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	total_size = nmemb * size;
+	ptr_byte = (unsigned char *)ptr;
+	i = 0;
+	while (i < total_size)
+	{
+		ptr_byte[i] = 0;
+		i++;
+	}
+	return (ptr);
 }

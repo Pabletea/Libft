@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 09:09:37 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/24 11:20:24 by pabalons         ###   ########.fr       */
+/*   Created: 2024/09/27 12:39:55 by pabalons          #+#    #+#             */
+/*   Updated: 2024/09/27 12:40:57 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		ft_strlen(const char *str);
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -18,25 +20,38 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len_s1;
 	size_t	len_s2;
 	size_t	i;
+	size_t	j;
 
-	if (s1 && !s2)
-		i = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	new_str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (!new_str)
 		return (NULL);
 	i = 0;
-	while (s1[i++])
+	while (i++ < len_s1)
 	{
 		new_str[i] = s1[i];
 	}
-	i = 0;
-	while (s2[i++])
+	j = 0;
+	while (j++ < len_s2)
 	{
-		new_str[len_s1 + i] = s2[i];
+		new_str[i + j] = s2[j];
 	}
-	new_str[(len_s1 + i) + 1] = '\0';
+	new_str[i + j] = '\0';
 	return (new_str);
-	return (NULL);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (*str != '\0')
+	{
+		i++;
+		str++;
+	}
+	return (i);
 }
