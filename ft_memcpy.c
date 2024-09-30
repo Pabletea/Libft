@@ -6,7 +6,7 @@
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:01:29 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/24 06:56:18 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/09/25 12:56:26 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
-	if (!dest && !src)
+	if (!dest || !src)
 		return (0);
 	i = 0;
 	while (i < n)

@@ -5,47 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 07:43:07 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/27 12:44:53 by pabalons         ###   ########.fr       */
+/*   Created: 2024/09/30 11:59:43 by pabalons          #+#    #+#             */
+/*   Updated: 2024/09/30 12:01:46 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(const char *str, char c);
+static int	word_count(const char *str, char c);
 static char	*fill_word(const char *str, int start, int end);
 static void	*ft_free(char **strs, int count);
-static void	ft_initiate_vars(int *i, int *j, int *s_word);
-int			ft_strlen(const char *str);
-void		*ft_calloc(size_t nmemb, size_t size);
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word);
 
 char	**ft_split(const char *s, char c)
 {
-	char	**arr_str;
-	int		i;
+	char	**res;
+	size_t	i;
 	int		j;
 	int		s_word;
 
-	*i = 0;
-	*j = 0;
-	*s_word = -1;
-	arr_str = ft_calloc((count_words(s, c) + 1), sizeof(char *));
-	if (!arr_str)
+	ft_initiate_vars(&i, &j, &s_word);
+	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
+	if (!res)
 		return (NULL);
-	while (i++ <= ft_strlen(s))
+	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && s_word < 0)
 			s_word = i;
 		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
 		{
-			arr_str[j] = fill_word(s, s_word, i);
-			if (!(arr_str[j]))
-				return (ft_free(arr_str, j));
+			res[j] = fill_word(s, s_word, i);
+			if (!(res[j]))
+				return (ft_free(res, j));
 			s_word = -1;
 			j++;
 		}
+		i++;
 	}
-	return (arr_str);
+	return (res);
+}
+
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word)
+{
+	*i = 0;
+	*j = 0;
+	*s_word = -1;
 }
 
 static void	*ft_free(char **strs, int count)
@@ -81,7 +85,7 @@ static char	*fill_word(const char *str, int start, int end)
 	return (word);
 }
 
-static int	count_words(const char *str, char c)
+static int	word_count(const char *str, char c)
 {
 	int	count;
 	int	x;
@@ -100,38 +104,4 @@ static int	count_words(const char *str, char c)
 		str++;
 	}
 	return (count);
-}
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (*str != '\0')
-	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void			*ptr;
-	size_t			total_size;
-	unsigned char	*ptr_byte;
-	size_t			i;
-
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	total_size = nmemb * size;
-	ptr_byte = (unsigned char *)ptr;
-	i = 0;
-	while (i < total_size)
-	{
-		ptr_byte[i] = 0;
-		i++;
-	}
-	return (ptr);
 }
