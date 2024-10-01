@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 15:00:10 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/30 12:06:19 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/01 07:32:22 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/01 07:45:56 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int	i;
-
-	i = 0;
-	while (*str != '\0')
+	if (new)
 	{
-		i++;
-		str++;
+		new->next = *lst;
+		*lst = new;
 	}
-	return (i);
 }

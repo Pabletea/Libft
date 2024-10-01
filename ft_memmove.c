@@ -6,7 +6,7 @@
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:22:39 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/23 14:32:47 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:40:03 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	*s;
 	char	*d;
-	size_t	i;
 
+	if ((!dest && !src) && n > 0)
+		return (NULL);
 	s = (char *)src;
 	d = (char *)dest;
 	if (d > s)
@@ -27,5 +28,4 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		while (n--)
 			*d++ = *s++;
 	return (dest);
-	return (d);
 }

@@ -5,69 +5,93 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/25 10:26:56 by pabalons          #+#    #+#              #
-#    Updated: 2024/09/30 13:57:30 by pabalons         ###   ########.fr        #
+#    Created: 2024/10/01 12:22:12 by pabalons          #+#    #+#              #
+#    Updated: 2024/10/01 14:39:13 by pabalons         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
-       ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
-       ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
-       ft_memmove.c ft_memset.c ft_split.c ft_strchr.c \
-       ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
-       ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c \
-       ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
-       ft_tolower.c ft_toupper.c ft_putchar_fd.c ft_putstr_fd.c \
-	   ft_putendl_fd.c ft_putnbr_fd.c 
+SRC = 	ft_isalpha.c \
+		ft_isdigit.c \
+		ft_isalnum.c \
+		ft_isascii.c \
+		ft_isprint.c \
+		ft_strlen.c \
+		ft_memset.c \
+		ft_bzero.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_strlcpy.c \
+		ft_strlcat.c \
+		ft_toupper.c \
+		ft_tolower.c \
+		ft_strchr.c \
+		ft_strrchr.c \
+		ft_strncmp.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_strnstr.c \
+		ft_atoi.c \
+		ft_calloc.c \
+		ft_strdup.c \
+		ft_substr.c \
+		ft_strjoin.c \
+		ft_strtrim.c \
+		ft_split.c \
+		ft_itoa.c \
+		ft_strmapi.c \
+		ft_striteri.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c
 
-TEST = test.c  # Archivo de prueba
+BONUS_SRC = ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c \
+			ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c \
+			ft_lstdelone_bonus.c \
+			ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c \
+			ft_lstmap_bonus.c
 
-CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-FLAGS = -Wall -Wextra -Werror
+OBJ = ${SRC:%.c=%.o}
+BONUS_OBJ = ${BONUS_SRC:%.c=%.o}
 
-OBJ = ${SRCS:.c=.o}
 
-BONUS_OBJ = ${BONUS_SRC:.c=.o}
+BONUS_FLAG = .bonus_compiled
 
-TEST_EXEC = test_exec  # Nombre del ejecutable de prueba
 
-# Generar todos los objetos y librería
-all: ${NAME}
+all: ${NAME} 
 
-# Crear la librería estática
+
+
 ${NAME}: ${OBJ}
-	@ar -rcs ${NAME} ${OBJ}
+	ar -rcs $@ $^
 
-bonus: .bonus_flag
 
-.bonus_flag: ${BONUS_OBJ}
-	@ar -rcs ${NAME} ${BONUS_OBJ}
-	-@touch .bonus_flag
-
-# Regla para compilar archivos objeto
 %.o: %.c
-	@${CC} ${FLAGS} -c $< -o $@
+	cc ${CFLAGS} -c $< -o $@
 
-# Limpiar objetos y ejecutables de prueba
 clean:
-	@rm -f ${OBJ} ${BONUS_OBJ}
-	@rm -f .bonus_flag ${TEST_EXEC}
+	rm -f ${OBJ} ${BONUS_OBJ}
+	rm -f ${BONUS_FLAG}
+
 
 fclean: clean
-	@rm -f ${NAME}
+	rm -f ${NAME}
+
 
 re: fclean all
 
-# Crear y ejecutar el programa de prueba
-exec: all ${TEST_EXEC}
-	@echo "Executing test with library $(NAME)"
-	@./${TEST_EXEC}
+bonus : ${BONUS_FLAG}
 
-# Regla para compilar el ejecutable de prueba enlazando con la librería
-${TEST_EXEC}: ${NAME} ${TEST}
-	@${CC} ${FLAGS} ${TEST} -L. -lft -o ${TEST_EXEC}
+${BONUS_FLAG}: ${OBJ} ${BONUS_OBJ}
+	ar -rcs ${NAME} ${BONUS_OBJ}
+	touch ${BONUS_FLAG}
 
-.PHONY: all clean fclean re bonus
+PHONY: all bonus clean fclean re

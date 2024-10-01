@@ -6,7 +6,7 @@
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:53:45 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/27 12:16:06 by pabalons         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:49:45 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 	size_t	len_src;
 
-	if (!dst || !src)
+	if ((!dst && !src) && size > 0)
 		return (0);
 	i = 0;
 	len_dst = 0;
