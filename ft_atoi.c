@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 11:15:16 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/25 12:49:46 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:09:20 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:09:24 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	check_signo(const char *str, int *i);
+static int	check_signo(const char *str, int *i);
 
 int	ft_atoi(const char *str)
 {
@@ -41,7 +41,7 @@ int	ft_atoi(const char *str)
 	return (resultado * signo);
 }
 
-int	check_signo(const char *str, int *i)
+static int	check_signo(const char *str, int *i)
 {
 	int	signo;
 

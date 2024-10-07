@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 16:50:28 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/27 10:25:25 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:32:54 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:42:45 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t siz)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	len;
 
 	len = 0;
-	if (siz)
+	if (size)
 	{
-		while (*(src + len) && --siz)
+		while (*(src + len) && --size)
 		{
 			*dst++ = *(src + len);
 			len++;
