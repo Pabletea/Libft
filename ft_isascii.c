@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:58:45 by pabalons          #+#    #+#             */
-/*   Updated: 2024/10/01 12:15:06 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:11:16 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:12:32 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	ft_isascii(int c)
 {
-	int	res;
-
-	res = 0;
 	if (c >= 0 && c <= 127)
-		res = 1;
-	return (res);
+		return (1);
+	return (0);
 }

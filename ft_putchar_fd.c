@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 12:23:29 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/30 12:30:20 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:28:13 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:28:17 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
+	if (fd < 0)
+		return ;
 	write(fd, &c, 1);
 }

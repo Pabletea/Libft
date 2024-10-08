@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 15:00:10 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/30 12:06:19 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:33:09 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:41:43 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
 	i = 0;
-	while (*str != '\0')
+	while (*s != '\0')
 	{
 		i++;
-		str++;
+		s++;
 	}
 	return (i);
 }

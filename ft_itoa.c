@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 09:01:02 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/25 10:14:05 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:13:08 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:13:12 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		int_len(int n);
+static int	int_len(int n);
 
 char	*ft_itoa(int n)
 {
@@ -41,7 +41,7 @@ char	*ft_itoa(int n)
 	return (str_res);
 }
 
-int	int_len(int n)
+static int	int_len(int n)
 {
 	int	len;
 

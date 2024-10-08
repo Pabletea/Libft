@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 14:50:48 by pabalons          #+#    #+#             */
-/*   Updated: 2024/10/01 10:26:19 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:12:24 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:12:27 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

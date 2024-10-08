@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabalons <pabalons@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 09:12:13 by pabalons          #+#    #+#             */
-/*   Updated: 2024/09/27 12:17:47 by pabalons         ###   ########.fr       */
+/*   Created: 2024/10/04 10:33:25 by pabalons          #+#    #+#             */
+/*   Updated: 2024/10/04 10:33:28 by pabalons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*res;
-	int				len;
+	char	*res;
+	int		len;
 
 	if (!s || !f)
 		return (NULL);
