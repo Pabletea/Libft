@@ -42,7 +42,6 @@ Below is a breakdown of each C file in this repository and its purpose:
 | **`ft_strncmp.c`**           | Compares two strings up to a specified number of characters.                              |
 | **`ft_strnstr.c`**           | Searches for a substring within a string, limiting the search to a certain number of characters.          |
 | **`ft_strtrim.c`**           | Trims characters from the beginning and end of a string.                                  |
-| **`ft_substr.c`**            | Extracts a substring from a string, given a starting position and length.                                 |
 | **`ft_tolower.c`**           | Converts a character from uppercase to lowercase.                                         |
 | **`ft_toupper.c`**           | Converts a character from lowercase to uppercase.                                         |
 | **`ft_lstadd_back_bonus.c`** | Adds an element at the end of a linked list.                                  |
@@ -68,7 +67,7 @@ Below is a breakdown of each C file in this repository and its purpose:
 To build and run this project, you will need:
 
 - A C compiler (e.g., `gcc`)
-- [Any other dependencies or tools needed, e.g., "Make sure `make` is installed if using the Makefile."]
+- Make sure `make` is installed if using the Makefile.
 
 ### Building the Project
 
